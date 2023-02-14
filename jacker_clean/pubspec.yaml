@@ -31,6 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
    
 
 
@@ -39,6 +40,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^3.0.1
   provider: ^6.0.5
+
  
  
 
@@ -65,8 +67,8 @@ flutter:
   uses-material-design: true
 
  
-  # assets:
-  #   - lib/images/
+  assets:
+    - lib/image/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

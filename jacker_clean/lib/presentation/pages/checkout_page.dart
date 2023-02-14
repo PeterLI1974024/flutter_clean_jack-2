@@ -26,38 +26,60 @@ class _CheckOutPageState extends State<CheckOutPage> {
             Constants.priceConfirmation,
             style: TextStyle(color: Swatches.white),
           )),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
               Constants.orderContent,
               style: TextStyle(fontSize: 20, color: Swatches.black),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 5),
-              child: Text(
-                Constants.serviceItem,
-                style: TextStyle(fontSize: 18),
-              ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 6, bottom: 5, left: 16),
+            child: Text(
+              Constants.serviceItem,
+              style: TextStyle(fontSize: 18),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '${widget.serviceItem.name} x ${widget.serviceItem.count}',
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  Text('${widget.serviceItem.price}')
-                ],
-              ),
-            )
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '${widget.serviceItem.name} x ${widget.serviceItem.count}',
+                  style: const TextStyle(fontSize: 16),
+                ),
+                Text('${widget.serviceItem.price}')
+              ],
+            ),
+          ),
+          Expanded(
+            child: Image.asset(
+              'lib/image/icon.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(
+                context,
+              );
+            },
+            child: Container(
+              color: Swatches.primary,
+              height: 70,
+              width: MediaQuery.of(context).size.width,
+              child: const Center(
+                  child: Text(
+                Constants.checkout,
+                style: TextStyle(fontSize: 18, color: Swatches.white),
+              )),
+            ),
+          )
+        ],
       ),
     );
   }
