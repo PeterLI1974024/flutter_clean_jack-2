@@ -67,6 +67,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
           ),
           GestureDetector(
             onTap: () {
+              var snackBar = SnackBar(
+                content: Text('結帳成功'),
+                backgroundColor: Colors.amber,
+              );
+              // Step 3
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
               Navigator.pop(context, -1);
             },
             child: Container(

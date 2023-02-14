@@ -117,9 +117,19 @@ class _ServiceListPageState extends State<ServiceListPage> {
         GestureDetector(
           onTap: () async {
             if (list.where((e) => e.count > 0).length != 1) {
-              print('you can only select one item');
+              var snackBar = const SnackBar(
+                content: Text('只能選擇一種服務'),
+                backgroundColor: Colors.amber,
+              );
+
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             } else if (list.where((e) => e.count == 0).length == list.length) {
-              print('you should select at least one item');
+              var snackBar = const SnackBar(
+                content: Text('至少需選擇一個服務'),
+                backgroundColor: Colors.amber,
+              );
+
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             } else {
               final res = await Navigator.push(context,
                   MaterialPageRoute(builder: ((context) {
