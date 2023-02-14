@@ -52,7 +52,10 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   '${widget.serviceItem.name} x ${widget.serviceItem.count}',
                   style: const TextStyle(fontSize: 16),
                 ),
-                Text('${widget.serviceItem.price}')
+                Text(
+                  '${widget.serviceItem.total}',
+                  style: const TextStyle(fontSize: 16),
+                )
               ],
             ),
           ),
@@ -64,9 +67,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pop(
-                context,
-              );
+              Navigator.pop(context, -1);
             },
             child: Container(
               color: Swatches.primary,

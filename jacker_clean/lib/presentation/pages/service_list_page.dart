@@ -19,7 +19,7 @@ class _ServiceListPageState extends State<ServiceListPage> {
   Future getItem() async {
     for (Map<String, dynamic> map in mockServiceData) {
       final serviceItem =
-          ServiceItem(name: '${map['title']}', price: '${map['price']}');
+          ServiceItem(name: '${map['title']}', price: map['price']);
       list.add(serviceItem);
     }
   }
@@ -27,6 +27,7 @@ class _ServiceListPageState extends State<ServiceListPage> {
   @override
   void initState() {
     getItem();
+
     super.initState();
   }
 
@@ -114,16 +115,22 @@ class _ServiceListPageState extends State<ServiceListPage> {
           ),
         ),
         GestureDetector(
-          onTap: () {
+          onTap: () async {
             if (list.where((e) => e.count > 0).length != 1) {
               print('you can only select one item');
             } else if (list.where((e) => e.count == 0).length == list.length) {
               print('you should select at least one item');
             } else {
-              Navigator.push(context, MaterialPageRoute(builder: ((context) {
+              final res = await Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) {
                 return CheckOutPage(
                     serviceItem: list.firstWhere((e) => e.count > 0));
               })));
+              if (res == -1) {
+                list.clear();
+                await getItem();
+                setState(() {});
+              }
             }
           },
           child: Container(
