@@ -70,7 +70,7 @@ class _ServiceListPageState extends State<ServiceListPage> {
                   return ListTile(
                     title: Text(list[index].name),
                     subtitle: Text(
-                      '\$' + list[index].price,
+                      '\$' + list[index].price.toString(),
                       style: const TextStyle(
                           color: Swatches.primary, fontSize: 18),
                     ),
@@ -122,9 +122,7 @@ class _ServiceListPageState extends State<ServiceListPage> {
             } else {
               Navigator.push(context, MaterialPageRoute(builder: ((context) {
                 return CheckOutPage(
-                    serviceItem: list.where(
-                  (e) => e.count > 0,
-                ));
+                    serviceItem: list.firstWhere((e) => e.count > 0));
               })));
             }
           },
